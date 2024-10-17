@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>College Service</h1> <!-- Updated heading -->
+  <div class="college-form">
+    <form (ngSubmit)="onSubmit()">
+      <input type="text" [(ngModel)]="currentCollege.collegeName" name="collegeName" placeholder="College Name" required>
+      <input type="text" [(ngModel)]="currentCollege.location" name="location" placeholder="Location" required>
+      <input type="number" [(ngModel)]="currentCollege.establishedYear" name="establishedYear" placeholder="Established Year" required>
+      <button type="submit">{{ editMode ? 'Update' : 'Add' }} College</button>
+    </form>
+  </div>
+  <div class="college-list">
+    <ul>
+      <li *ngFor="let college of colleges">
+        <div class="college-header">
+          <strong>{{ college.collegeName }}</strong>
+          <div class="college-actions">
+            <button class="edit" (click)="editCollege(college)">Edit</button>
+            <button class="delete" (click)="deleteCollege(college.id)">Delete</button>
+          </div>
+        </div>
+        <div class="college-details">
+          <p>Location: {{ college.location }}</p>
+          <p>Established Year: {{ college.establishedYear }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
